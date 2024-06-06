@@ -10,13 +10,13 @@ const Footer = () => {
             <Box sx={styles.section}>
               <Typography variant="h6" sx={styles.title}>Information</Typography>
               <Typography variant="body2" sx={styles.text}>
-              Admissions<br/> 
-School Facilities<br/> 
-Gallery<br/> 
-Events<br/> 
-Career<br/> 
-Contact<br/> 
-Privacy Policy
+                Admissions<br />
+                School Facilities<br />
+                Gallery<br />
+                Events<br />
+                Career<br />
+                Contact<br />
+                Privacy Policy
               </Typography>
             </Box>
           </Grid>
@@ -24,29 +24,29 @@ Privacy Policy
             <Box sx={styles.section}>
               <Typography variant="h6" sx={styles.title}>Admissions</Typography>
               <Typography variant="body2" sx={styles.text}>
-              Founder’s Vision<br/> 
-President’s Message<br/> 
-Vice President’s Message<br/> 
-Principal’s Message<br/> 
-Vision and Mission<br/> 
-Testimonial<br/> 
-School Profile<br/> 
-School Facilities <br/>              
-</Typography>
+                Founder’s Vision<br />
+                President’s Message<br />
+                Vice President’s Message<br />
+                Principal’s Message<br />
+                Vision and Mission<br />
+                Testimonial<br />
+                School Profile<br />
+                School Facilities <br />
+              </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Box sx={styles.section}>
               <Typography variant="h6" sx={styles.title}>School Facilities</Typography>
               <Typography variant="body2" sx={styles.text}>
-              Affiliation<br/> 
-Curriculum & Academic Vision<br/> 
-Faculty<br/> 
-Pre-Primary Wing<br/> 
-Primary Wing<br/> 
-Middle Wing<br/> 
-Senior Wing<br/> 
-Virtual Learning<br/> 
+                Affiliation<br />
+                Curriculum & Academic Vision<br />
+                Faculty<br />
+                Pre-Primary Wing<br />
+                Primary Wing<br />
+                Middle Wing<br />
+                Senior Wing<br />
+                Virtual Learning<br />
               </Typography>
             </Box>
           </Grid>
@@ -54,11 +54,24 @@ Virtual Learning<br/>
             <Box sx={styles.section}>
               <Typography variant="h6" sx={styles.title}>Gallery</Typography>
               <Typography variant="body2" sx={styles.text}>
-            Faridabad-121007, Haryana, India
+                Faridabad-121007, Haryana, India
 
-+91 1294100781, 4100782
+                +91 1294100781, 4100782
 
-rps@gmail.com
+                rps@gmail.com
+              </Typography>
+              
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Box sx={styles.section}>
+              <Typography variant="h6" sx={styles.title}>Notice Board</Typography>
+              <Typography variant="body2" sx={styles.text}>
+                Latest announcements<br/>
+                Important notices<br/>
+                Upcoming events<br/>
+                Exam schedules<br/>
+                Holidays<br/>
               </Typography>
             </Box>
           </Grid>
@@ -89,7 +102,7 @@ const styles = {
   text: {
     fontSize: '14px',
     lineHeight: '1.6',
-    fontFamily: 'Arial', 
+    fontFamily: 'Arial',
   },
   link: {
     color: '#61dafb',
