@@ -1,10 +1,9 @@
-import { css } from "@emotion/react";
-import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
-import { Card, CardContent, Container, Grid, Slide, Typography, useMediaQuery, useTheme } from '@mui/material';
-import Fade from '@mui/material/Fade';
-import { motion } from "framer-motion";
+import { css } from '@emotion/react';
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { Card, CardContent, Container, Fade, Grid, Slide, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { motion } from 'framer-motion';
 import React, { useCallback, useEffect, useState } from 'react';
+
 import One from '../../Assets/1.jpeg';
 import Four from '../../Assets/11.jpeg';
 import Two from '../../Assets/2.jpeg';
@@ -14,7 +13,7 @@ import Six from '../../Assets/33.jpeg';
 const ImageSlider = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  const theme = useTheme(); // Theme object
+  const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const images = [
@@ -26,6 +25,10 @@ const ImageSlider = () => {
   const galleryImages = [
     { src: Four, title: "Gallery Image 1" },
     { src: Six, title: "Gallery Image 3" },
+    { src: Four, title: "Gallery Image 4" },
+    { src: Six, title: "Gallery Image 5" },
+    { src: Four, title: "Gallery Image 6" },
+    { src: Six, title: "Gallery Image 7" },
   ];
 
   const nextSlide = useCallback(() => {
@@ -43,23 +46,30 @@ const ImageSlider = () => {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 2rem; /* Add margin bottom to create space between cards */
+    margin-bottom: 2rem;
   `;
 
   const cardContentStyles = css`
     text-align: center;
+    font-family: Arial Black, sans-serif;
   `;
 
   const planTitleStyles = css`
     color: #ffffff;
     font-size: 2rem;
     margin-top: 1rem;
+    font-family: Arial Black, sans-serif;
   `;
 
   const cardBodyStyles = css`
     color: #6c757d;
     font-weight: bold;
     font-size: 1.1rem;
+    font-family: Arial Black, sans-serif;
+  `;
+
+  const sectionTitleStyles = css`
+    font-family: Arial Black, sans-serif;
   `;
 
   const cardDetails = [
@@ -78,9 +88,24 @@ const ImageSlider = () => {
   ];
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 10000); // 10 seconds interval
+    const interval = setInterval(nextSlide, 10000);
     return () => clearInterval(interval);
   }, [nextSlide]);
+
+  const buttonStyles = css`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 10;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  `;
 
   return (
     <div className="relative w-full h-full overflow-hidden mb-20">
@@ -94,14 +119,20 @@ const ImageSlider = () => {
 
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-500 text-white hover:bg-blue-700 p-2 rounded"
+        css={css`
+          ${buttonStyles};
+          left: 1rem;
+        `}
       >
         <ArrowBackIos />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-500 text-white hover:bg-blue-700 p-2 rounded"
+        css={css`
+          ${buttonStyles};
+          right: 1rem;
+        `}
       >
         <ArrowForwardIos />
       </button>
@@ -157,8 +188,9 @@ const ImageSlider = () => {
             ))}
           </Grid>
         </Slide>
-        <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}> {/* Add margin top here */}
-          <Grid item xs={12} md={6} style={{ marginTop: '2rem' }}> {/* Add margin-top style here */}
+        <Slide direction="right" in timeout={1000}>
+        <Grid container spacing={isSmallScreen  ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
+          <Grid item xs={12} md={6} style={{ marginTop: '2rem' }}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -176,7 +208,7 @@ const ImageSlider = () => {
               </Card>
             </motion.div>
           </Grid>
-          <Grid item xs={12} md={6} style={{ marginTop: '2rem' }}> {/* Add margin-top style here */}
+          <Grid item xs={12} md={6} style={{ marginTop: '2rem' }}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -196,11 +228,23 @@ const ImageSlider = () => {
             </motion.div>
           </Grid>
         </Grid>
+        </Slide>
         <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
           <Grid item xs={12}>
-            <Typography variant="h4" align="center" style={{ marginBottom: '2rem', marginTop: '2rem' }}>
-              Gallery
-            </Typography>
+            <Typography
+            variant="h4"
+            style={{ marginBottom: '2rem', marginTop: '2rem' }}
+            component="h2"
+            className="font-bold text-center mb-4"
+            sx={{
+              fontFamily: "Arial Black",
+              fontSize: "2.5rem",
+              fontWeight: "bold",
+              color: "#000000",
+            }}
+          >
+      Gallery
+          </Typography>
           </Grid>
           {galleryImages.map((image, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -227,3 +271,4 @@ const ImageSlider = () => {
 };
 
 export default ImageSlider;
+
