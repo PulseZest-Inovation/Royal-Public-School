@@ -1,18 +1,35 @@
+import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import React from 'react';
-import { Typography, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, TextField, Button } from '@mui/material';
-import { Box } from '@mui/material';
 
 const AdmissionForm = () => {
     console.log('AdmissionForm component rendered');
 
     return (
         <div style={{ backgroundColor: '#f8f8f8', padding: '20px' }}>
-            <Typography variant="h4" gutterBottom color="textPrimary">Fee Structure</Typography>
+  <Typography
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'left' // Adjusted textAlign
 
+  }}
+>
+  Fee Structure
+</Typography>
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
-                        <TableRow style={{ backgroundColor: '#ffc0cb' }}>
+                        <TableRow style={{ backgroundColor: '#87a2b7' }}>
                             <TableCell style={{ color: '#fff' }}>Fee</TableCell>
                             <TableCell style={{ color: '#fff' }}>NUR-UKG</TableCell>
                             <TableCell style={{ color: '#fff' }}>I - III<br />with Basic AI</TableCell>
@@ -22,7 +39,7 @@ const AdmissionForm = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <TableRow style={{ backgroundColor: '#ffe4e1' }}>
+                        <TableRow style={{ backgroundColor: '#ecf7fc' }}>
                             <TableCell style={{ color: '#000' }}>Registration Fee<br />(Application Form)</TableCell>
                             <TableCell style={{ color: '#000' }}>₹300/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹300/-</TableCell>
@@ -30,7 +47,7 @@ const AdmissionForm = () => {
                             <TableCell style={{ color: '#000' }}>₹300/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹300/-</TableCell>
                         </TableRow>
-                        <TableRow style={{ backgroundColor: '#ffe4e1' }}>
+                        <TableRow style={{ backgroundColor: '#daeff8' }}>
                             <TableCell style={{ color: '#000' }}>Admission Fee<br />(at the time of admission)</TableCell>
                             <TableCell style={{ color: '#000' }}>₹3000/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹3500/-</TableCell>
@@ -38,7 +55,7 @@ const AdmissionForm = () => {
                             <TableCell style={{ color: '#000' }}>₹5000/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹6000/-</TableCell>
                         </TableRow>
-                        <TableRow style={{ backgroundColor: '#ffe4e1' }}>
+                        <TableRow style={{ backgroundColor: '#ecf7fc' }}>
                             <TableCell style={{ color: '#000' }}>Activity / Lab Fee<br />(at the time of admission)</TableCell>
                             <TableCell style={{ color: '#000' }}>₹1500/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹2000/-</TableCell>
@@ -46,7 +63,7 @@ const AdmissionForm = () => {
                             <TableCell style={{ color: '#000' }}>₹3000/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹6000/-</TableCell>
                         </TableRow>
-                        <TableRow style={{ backgroundColor: '#ffe4e1' }}>
+                        <TableRow style={{ backgroundColor: '#daeff8' }}>
                             <TableCell style={{ color: '#000' }}>Annual Fee<br />(50% at the time of admission)</TableCell>
                             <TableCell style={{ color: '#000' }}>₹3500/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹4000/-</TableCell>
@@ -54,7 +71,7 @@ const AdmissionForm = () => {
                             <TableCell style={{ color: '#000' }}>₹5000/-</TableCell>
                             <TableCell style={{ color: '#000' }}>₹10000/-</TableCell>
                         </TableRow>
-                        <TableRow style={{ backgroundColor: '#ffe4e1' }}>
+                        <TableRow style={{ backgroundColor: '#ecf7fc' }}>
                             <TableCell style={{ color: '#000' }}>Tuition Fee<br />(per month)</TableCell>
                             <TableCell style={{ color: '#000' }}>₹1000/-<br />x 12 months</TableCell>
                             <TableCell style={{ color: '#000' }}>₹1100/-<br />x 12 months</TableCell>
@@ -67,8 +84,26 @@ const AdmissionForm = () => {
             </TableContainer>
             <br></br>
             <Box p={3} bgcolor="#f9f9f9" borderRadius={8} boxShadow={3}>
-                <Typography variant="h4" gutterBottom color="textPrimary">Fee Criteria</Typography>
+            <Typography
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'left' // Adjusted textAlign
 
+  }}
+>
+Fee Criteria
+</Typography>
                 <Typography variant="body1" gutterBottom color="textPrimary">
                     <strong>1. ADMISSION FEE:</strong> At the time of admission, ADMISSION FEE, LAB/ACTIVITY FEE, 50% ANNUAL FEE, and ONE MONTH'S TUITION FEE has to be deposited. The remaining 50% ANNUAL FEE will have to be deposited in the first week of September.
                 </Typography>
@@ -86,7 +121,26 @@ const AdmissionForm = () => {
 
             {/* Student Admission Form */}
             <Box p={3} bgcolor="#f9f9f9" borderRadius={8} boxShadow={3}>
-                <Typography variant="h4" gutterBottom color="textPrimary">Student Admission Form</Typography>
+            <Typography
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'left' // Adjusted textAlign
+
+  }}
+>
+Student Admission Form
+</Typography>
                 <form>
                     <TextField
                         id="studentName"

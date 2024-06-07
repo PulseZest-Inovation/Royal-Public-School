@@ -1,45 +1,130 @@
+import { Avatar, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Slide from '@mui/material/Slide';
 import React from 'react';
-import { Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Avatar } from '@mui/material';
-import principalImage from './resource/man.png'; // Import images for each faculty member
-import vicePrincipalImage from './resource/man2.png';
-import teacherImage from './resource/cat.png';
 
 const FacultyList = () => {
     const facultyMembers = [
-        { name: 'Principal', image: principalImage },
-        { name: 'Vice Principal', image: vicePrincipalImage },
-        { name: 'Teacher 1', image: teacherImage },
-        { name: 'Teacher 2', image: teacherImage },
-        { name: 'Teacher 3', image: teacherImage },
-        // Add more faculty members here
+    
     ];
 
     return (
-        <Container>
-            <Typography variant="h4" align="center" gutterBottom color="textPrimary">
-               <u>Faculty List</u>
-            </Typography>
-            <TableContainer>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Image</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {facultyMembers.map((faculty, index) => (
-                            <TableRow key={index}>
-                                <TableCell>{faculty.name}</TableCell>
-                                <TableCell>
-                                    <Avatar alt={faculty.name} src={faculty.image} />
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </Container>
+        <Grid container spacing={4}>
+        {/* Team Member 1 */}
+        <Slide direction="up" in timeout={3000}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
+              <Avatar
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
+              />
+              <Typography variant="h6" component="h3">
+              Dhruv
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+            (95% in 12th)
+              </Typography>
+              <div style={{ textAlign: 'justify' }}>
+              
+              </div>
+            </Paper>
+          </Grid>
+        </Slide>
+              {/* Team Member 2 */}
+              <Slide direction="up" in timeout={3000}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
+              <Avatar
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
+              />
+              <Typography variant="h6" component="h3">
+              Nidhi 
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+              (93% in 12th)
+              </Typography>
+              <div style={{ textAlign: 'justify' }}>
+
+              </div>
+            </Paper>
+          </Grid>
+        </Slide>
+        {/* Team Member 3 */}
+        <Slide direction="up" in timeout={3000}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
+              <Avatar
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
+              />
+              <Typography variant="h6" component="h3">
+                Ridhi 
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+              (97% in 12th)
+              </Typography>
+              <div style={{ textAlign: 'justify' }}>
+              </div>
+            </Paper>
+          </Grid>
+        </Slide>
+        {/* Team Member 4 */}
+        <Slide direction="up" in timeout={3000}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
+              <Avatar
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
+              />
+              <Typography variant="h6" component="h3">
+                Rahul              </Typography>
+              <Typography variant="body2" color="textSecondary">
+              (92% in 12th)
+
+              </Typography>
+              <div style={{ textAlign: 'justify' }}>
+                
+                  </div>
+
+            </Paper>
+          </Grid>
+        </Slide>
+        {/* Team Member 5 */}
+        <Slide direction="up" in timeout={3000}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
+              <Avatar
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
+              />
+              <Typography variant="h6" component="h3">
+                Yashika 
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+              (99.8% in 12th)
+              </Typography>
+              <div style={{ textAlign: 'justify' }}>
+               </div>
+            </Paper>
+          </Grid>
+        </Slide>
+        {/* Team Member 6 */}
+        <Slide direction="up" in timeout={3000}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
+              <Avatar
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
+              />
+              <Typography variant="h6" component="h3">
+                Srishti
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+              (96% in 12th)
+              </Typography>
+              <div style={{ textAlign: 'justify' }}>
+              </div>
+            </Paper>
+          </Grid>
+        </Slide>
+      </Grid>
+  
     );
 };
 
