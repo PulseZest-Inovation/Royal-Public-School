@@ -10,6 +10,7 @@ import Principle from './pages/Profile/principle';
 import VicePrinciple from "./pages/Profile/vicepresident";
 import VicePresident from "./pages/Profile/viceprinciple";
 import AboutUs from './pages/aboutUs/aboutUs';
+import Career from './pages/career/career';
 import Contact from './pages/contact/contact';
 
 
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/career" element={<Career />} />
             <Route path="/admission" element={<AdmissionPage />} />
 
             <Route path="/vice-president" element={<VicePrinciple />} />

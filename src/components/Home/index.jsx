@@ -15,7 +15,7 @@ import {
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 
 // All Features
 import Calendar from '../Features/Calendar/calendar';
@@ -117,30 +117,54 @@ const ImageSlider = () => {
     },
   };
 
-  
   return (
     <div className="relative w-full h-full overflow-hidden mb-20">
-    <Carousel
-      animation="slide"
-      navButtonsAlwaysVisible
-      navButtonsProps={{
-        style: {
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          borderRadius: 0,
-        }
-      }}
-    >
-      {images.map((image, index) => (
-        <Fade in={true} timeout={500} key={index}>
-          <img
-            src={image.src}
-            alt={`Slide ${index + 1}`}
-            className="w-full h-auto object-cover max-h-[calc(100%-64px)] shadow-md transition-opacity duration-500"
-          />
-        </Fade>
-      ))}
-    </Carousel>
+      <Carousel
+        animation="slide"
+        navButtonsAlwaysVisible
+        navButtonsProps={{
+          style: {
+            position:'fixed',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            color: 'white',
+            borderRadius: 0,
+          }
+        }}
+        // Fix navigation button styles
+        navButtonsWrapperProps={{
+          style: {
+            top: 'calc(50% - 20px)', // Center vertically
+            height: '40px',
+            zIndex: 1,
+          }
+        }}
+        indicatorIconButtonProps={{
+          style: {
+            color: 'rgba(255, 255, 255, 0.5)', // Style for inactive indicators
+          }
+        }}
+        activeIndicatorIconButtonProps={{
+          style: {
+            color: 'white', // Style for active indicator
+          }
+        }}
+        indicatorContainerProps={{
+          style: {
+            marginTop: '10px', // Adjust space between image and indicators
+            textAlign: 'center', // Center indicators
+          }
+        }}
+      >
+        {images.map((image, index) => (
+          <Fade in={true} timeout={500} key={index}>
+            <img
+              src={image.src}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-auto object-cover max-h-[calc(100%-64px)] shadow-md transition-opacity duration-500"
+            />
+          </Fade>
+        ))}
+      </Carousel>
 
       {/* Admission Button */}
       <Box sx={buttonContainerStyles}>
@@ -186,25 +210,24 @@ const ImageSlider = () => {
         >
           <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
             <Grid item xs={12}>
-            <Typography
-  variant="h4"
-  style={{
-    marginBottom: '2rem',
-    marginTop: '2rem',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
-  }}
-  component="h2"
-  className="font-bold text-center mb-4"
-  sx={{
-    fontFamily: 'Arial Black',
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: '#000000',
-  }}
->
-  Gallery
-</Typography>
-
+              <Typography
+                variant="h4"
+                style={{
+                  marginBottom: '2rem',
+                  marginTop: '2rem',
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+                }}
+                component="h2"
+                className="font-bold text-center mb-4"
+                sx={{
+                  fontFamily: 'Arial Black',
+                  fontSize: '2.5rem',
+                  fontWeight: 'bold',
+                  color: '#000000',
+                }}
+              >
+                Gallery
+              </Typography>
             </Grid>
             {galleryImages.map((image, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
@@ -229,25 +252,24 @@ const ImageSlider = () => {
           {/* Notice Board */}
           <Grid item xs={12} md={6}>
             <div>
-            <Typography
-  variant="h4"
-  style={{
-    marginBottom: '2rem',
-    marginTop: '2rem',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
-  }}
-  component="h2"
-  className="font-bold text-center mb-4"
-  sx={{
-    fontFamily: 'Arial Black',
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: '#000000',
-  }}
->
-  Notice Board
-</Typography>
-
+              <Typography
+                variant="h4"
+                style={{
+                  marginBottom: '2rem',
+                  marginTop: '2rem',
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+                }}
+                component="h2"
+                className="font-bold text-center mb-4"
+                sx={{
+                  fontFamily: 'Arial Black',
+                  fontSize: '2.5rem',
+                  fontWeight: 'bold',
+                  color: '#000000',
+                }}
+              >
+                Notice Board
+              </Typography>
 
               {/* Notice Board Component */}
               <NoticeBoard />
@@ -258,23 +280,22 @@ const ImageSlider = () => {
           {/* Calendar */}
           <Grid item xs={12} md={6}>
             <div style={{ marginTop: '2rem' }}>
-            <Typography
-  variant="h4"
-  style={{
-    marginBottom: '2rem',
-    marginTop: '2rem',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
-  }}
-  component="h2"
-  className="font-bold text-center mb-4"
-  sx={{
-    fontFamily: 'Arial Black',
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: '#000000',
-  }}
->
-
+              <Typography
+                variant="h4"
+                style={{
+                  marginBottom: '2rem',
+                  marginTop: '2rem',
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+                }}
+                component="h2"
+                className="font-bold text-center mb-4"
+                sx={{
+                  fontFamily: 'Arial Black',
+                  fontSize: '2.5rem',
+                  fontWeight: 'bold',
+                  color: '#000000',
+                }}
+              >
                 Upcoming Events
               </Typography>
               <Container>
@@ -286,24 +307,24 @@ const ImageSlider = () => {
 
           <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
             <Grid item xs={12}>
-            <Typography
-  variant="h4"
-  style={{
-    marginBottom: '2rem',
-    marginTop: '2rem',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
-  }}
-  component="h2"
-  className="font-bold text-center mb-4"
-  sx={{
-    fontFamily: 'Arial Black',
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: '#000000',
-  }}
->
-  Scholars
-</Typography>
+              <Typography
+                variant="h4"
+                style={{
+                  marginBottom: '2rem',
+                  marginTop: '2rem',
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+                }}
+                component="h2"
+                className="font-bold text-center mb-4"
+                sx={{
+                  fontFamily: 'Arial Black',
+                  fontSize: '2.5rem',
+                  fontWeight: 'bold',
+                  color: '#000000',
+                }}
+              >
+                Scholars
+              </Typography>
 
               <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
                 <FacultyList /> {/* Use FacultyList component */}

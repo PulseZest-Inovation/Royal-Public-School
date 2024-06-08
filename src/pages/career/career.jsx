@@ -1,26 +1,35 @@
 import { Box, Button, Grid, MenuItem, Select, TextField, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import 'leaflet/dist/leaflet.css';
-import React from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
-import 'tailwindcss/tailwind.css';
+import React, { useState } from 'react';
 import backgroundImage from '../../Assets/1.jpeg';
 
-const Contact = () => {
-  const bareillyCoordinates = [28.367, 79.430];
-
-  const [selectedClass, setSelectedClass] = React.useState('');
+const Career = () => {
+  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleChange = (event) => {
     setSelectedClass(event.target.value);
   };
 
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can implement the logic to upload the selected file
+    if (selectedFile) {
+      console.log('Uploading file:', selectedFile);
+      // Add your upload logic here
+    } else {
+      console.log('No file selected');
+    }
+  };
+
   return (
-    <Box className="relative" sx={{ minHeight: '100vh', overflow: 'hidden' }}>
-      <Box className="absolute inset-0 z-0" sx={{   
-        overflow: 'hidden',
-      }}>
+    <Box className="relative flex justify-center items-center" sx={{ minHeight: '100vh', overflow: 'hidden' }}>
+      <Box className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={backgroundImage}
           alt="Background"
@@ -41,20 +50,20 @@ const Contact = () => {
             textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
           }}
         >
-          Contact Details
+          Job Application Form
         </Typography><br/>
-        <form className="space-y-6 bg-white p-6 rounded-lg shadow-md">
+        <form className="space-y-6 bg-white p-6 rounded-lg shadow-md" onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="name"
                 label="Name"
-                type="name"
+                type="text"
                 variant="outlined"
                 margin="normal"
                 fullWidth
                 required
-              
+                className="mb-2"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -66,23 +75,24 @@ const Contact = () => {
                 margin="normal"
                 fullWidth
                 required
-               
+                className="mb-2"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="phone"
                 label="Phone"
-                type="phone"
+                type="tel"
                 variant="outlined"
                 margin="normal"
                 fullWidth
                 required
+                className="mb-2"
               />
             </Grid>
             <Grid item xs={12} sm={6} style={{ marginTop: '16px' }}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Class</InputLabel>
+                <InputLabel id="demo-simple-select-label">Applied Post</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -91,37 +101,24 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                 >
-    <MenuItem value="">NUR-UKG</MenuItem>
-    <MenuItem value="lkg">I-III</MenuItem>
-    <MenuItem value="ukg">IV-V</MenuItem>
-    <MenuItem value="1">VI-VIII</MenuItem>
-    <MenuItem value="1">IX-X</MenuItem>
+                  <MenuItem value="PRT">PRT</MenuItem>
+                  <MenuItem value="PGT">PGT</MenuItem>
+                  <MenuItem value="TGT">TGT</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-
             <Grid item xs={12}>
-              <TextField
-                id="subject"
-                label="Subject"
-                type="subject"
-                variant="outlined"
-                margin="normal"
-                fullWidth
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                id="message"
-                label="Message"
-                type="message"
-                variant="outlined"
-                margin="normal"
-                fullWidth
-                required
-              
-              />
+              <label htmlFor="resume" className="block text-sm font-medium text-gray-700 ml-0 mb-2">Upload Resume</label>
+              <div className="mt-1">
+                <input
+                  type="file"
+                  id="resume"
+                  name="resume"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleFileChange}
+                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                />
+              </div>
             </Grid>
             <Grid item xs={12}>
               <Button
@@ -135,37 +132,9 @@ const Contact = () => {
             </Grid>
           </Grid>
         </form>
-        <Box mt={8}>
-          <Typography
-            variant="h4"
-            component="h2"
-            className="font-bold text-center mb-4"
-            sx={{
-              fontFamily: 'Arial Black',
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: '#000000',
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
-            }}
-          >
-            Our Location
-            </Typography><br/>
-          <Box className="h-64 sm:h-96 w-full rounded-lg overflow-hidden shadow-md">
-            <MapContainer center={bareillyCoordinates} zoom={13} style={{ height: '100%', width: '100%' }}>
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            </MapContainer>
-          </Box>
-          <Box mt={4}>
-            <Typography variant="body1">
-              <strong>Location:</strong> Royal Public Sr. Sec. School, Bareilly <br/>
-              <strong>Email:</strong> royal.wazirpur@gmail.com <br/>
-              <strong>Phone:</strong> Reception: 8745957957, Mobile: +91-9811934270, +91-9811934270
-            </Typography>
-          </Box>
-        </Box>
       </Box>
     </Box>
   );
 }
 
-export default Contact;
+export default Career;
