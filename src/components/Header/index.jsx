@@ -85,9 +85,20 @@ const Header = () => {
               ))}
             </ul>
           </nav>
+          <nav
+            className={`lg:flex items-center ${navbarOpen ? 'block' : 'hidden'} lg:block absolute lg:static top-16 left-0 right-0 bg-gray-800 lg:bg-transparent z-10 lg:z-auto p-4 lg:p-0 transition-transform transform ${navbarOpen ? 'translate-y-0' : '-translate-y-full lg:translate-y-0'} duration-300`}
+          >
+            <ul className="flex flex-col lg:flex-row lg:space-x-8 space-y-4 lg:space-y-0">
+              {/* Existing code */}
+              <li>
+                <Link to="/notice-board" className="text-white hover:text-primary">Notice Board</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>
+      
   );
 };
 

@@ -1,9 +1,28 @@
 import { css } from '@emotion/react';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import { Card, CardContent, Container, Fade, Grid, Slide, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Fade,
+  Grid,
+  Slide,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { motion } from 'framer-motion';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Carousel from 'react-material-ui-carousel';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate from react-router-dom
 
+// All Features
+import Calendar from '../Features/Calendar/calendar';
+import FacultyList from '../Features/Faculty/FacultyList';
+import NoticeBoard from '../Features/NoticeBoard/noticeBoard';
+
+// All Images
 import One from '../../Assets/1.jpeg';
 import Four from '../../Assets/11.jpeg';
 import Two from '../../Assets/2.jpeg';
@@ -11,10 +30,11 @@ import Three from '../../Assets/3.jpeg';
 import Six from '../../Assets/33.jpeg';
 
 const ImageSlider = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [fadeKey, setFadeKey] = useState(0);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const navigate = useNavigate();
+
+  const [showAdmissionForm, setShowAdmissionForm] = useState(false);
 
   const images = [
     { src: One, title: "Sports Day", description: "Join us for a fun-filled day of sports activities!", date: "June 15, 2024", link: "/events/sports-day" },
@@ -31,14 +51,24 @@ const ImageSlider = () => {
     { src: Six, title: "Gallery Image 7" },
   ];
 
-  const nextSlide = useCallback(() => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    setFadeKey((prevKey) => prevKey + 1);
-  }, [images.length]);
+  const handleAdmissionButtonClick = () => {
+    setShowAdmissionForm(true);
+    navigate('/admission');
+  };
 
-  const prevSlide = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-    setFadeKey((prevKey) => prevKey + 1);
+  const buttonContainerStyles = {
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+  };
+
+  const admissionButtonStyles = {
+    backgroundColor: '#87a2b7',
+    color: 'black', // Set text color to black
+    borderRadius: '50%',
+    padding: '10px',
+    fontSize: '24px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
   };
 
   const cardStyles = css`
@@ -51,97 +81,81 @@ const ImageSlider = () => {
 
   const cardContentStyles = css`
     text-align: center;
-    font-family: Arial Black, sans-serif;
+    font-family: 'Arial Black', sans-serif;
   `;
 
   const planTitleStyles = css`
     color: #ffffff;
     font-size: 2rem;
     margin-top: 1rem;
-    font-family: Arial Black, sans-serif;
+    font-family: 'Arial Black', sans-serif;
   `;
 
   const cardBodyStyles = css`
     color: #6c757d;
     font-weight: bold;
     font-size: 1.1rem;
-    font-family: Arial Black, sans-serif;
+    font-family: 'Arial Black', sans-serif;
   `;
 
-  const sectionTitleStyles = css`
-    font-family: Arial Black, sans-serif;
-  `;
-
-  const cardDetails = [
-    {
-      title: "Student’s Council",
-      description: "Description for Student’s Council."
+  const containerVariants = {
+    hidden: { opacity: 5, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.5,
+      },
     },
-    {
-      title: "Admission Information",
-      description: "Description for Admission Information."
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0, opacity: 1,
     },
-    {
-      title: "Online Registration",
-      description: "Description for Online Registration."
-    },
-  ];
+  };
 
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 10000);
-    return () => clearInterval(interval);
-  }, [nextSlide]);
-
-  const buttonStyles = css`
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    z-index: 10;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-  `;
-
+  
   return (
     <div className="relative w-full h-full overflow-hidden mb-20">
-      <Fade in={true} timeout={100} key={fadeKey}>
-        <img 
-          src={images[currentImageIndex].src} 
-          alt={`Slide ${currentImageIndex + 1}`} 
-          className="w-full h-auto object-cover max-h-[calc(100%-64px)] shadow-md transition-opacity duration-500" 
-        />
-      </Fade>
+    <Carousel
+      animation="slide"
+      navButtonsAlwaysVisible
+      navButtonsProps={{
+        style: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          borderRadius: 0,
+        }
+      }}
+    >
+      {images.map((image, index) => (
+        <Fade in={true} timeout={500} key={index}>
+          <img
+            src={image.src}
+            alt={`Slide ${index + 1}`}
+            className="w-full h-auto object-cover max-h-[calc(100%-64px)] shadow-md transition-opacity duration-500"
+          />
+        </Fade>
+      ))}
+    </Carousel>
 
-      <button
-        onClick={prevSlide}
-        css={css`
-          ${buttonStyles};
-          left: 1rem;
-        `}
-      >
-        <ArrowBackIos />
-      </button>
+      {/* Admission Button */}
+      <Box sx={buttonContainerStyles}>
+        <Box borderRadius="50%" bgcolor="white" boxShadow="0 0 10px rgba(0, 0, 0, 0.5)">
+          <Button component={Link} to="/admission" variant="contained" sx={admissionButtonStyles}>
+            Admission
+          </Button>
+        </Box>
+      </Box>
 
-      <button
-        onClick={nextSlide}
-        css={css`
-          ${buttonStyles};
-          right: 1rem;
-        `}
-      >
-        <ArrowForwardIos />
-      </button>
-      
       <Container>
         <br />
         <Slide direction="left" in timeout={1000}>
           <Grid container spacing={isSmallScreen ? 2 : 4}>
-            {cardDetails.slice(0, 3).map((card, index) => (
+            {images.map((card, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
@@ -163,23 +177,45 @@ const ImageSlider = () => {
             ))}
           </Grid>
         </Slide>
+
         <br />
-        <Slide direction="right" in timeout={1000}>
-          <Grid container spacing={isSmallScreen ? 2 : 4}>
-            {cardDetails.slice(3).map((card, index) => (
-              <Grid item xs={12} md={4} key={index}>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
+            <Grid item xs={12}>
+            <Typography
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+  }}
+>
+  Gallery
+</Typography>
+
+            </Grid>
+            {galleryImages.map((image, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
                 <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
+                  variants={itemVariants}
                 >
                   <Card css={cardStyles}>
+                    <img src={image.src} alt={image.title} style={{ width: '100%', height: 'auto', borderRadius: '12px 12px 0 0' }} />
                     <CardContent css={cardContentStyles}>
-                      <Typography variant="h5" css={planTitleStyles}>
-                        {card.title}
-                      </Typography>
                       <Typography variant="body2" css={cardBodyStyles}>
-                        {card.description}
+                        {image.title}
                       </Typography>
                     </CardContent>
                   </Card>
@@ -187,83 +223,93 @@ const ImageSlider = () => {
               </Grid>
             ))}
           </Grid>
-        </Slide>
-        <Slide direction="right" in timeout={1000}>
-        <Grid container spacing={isSmallScreen  ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
-          <Grid item xs={12} md={6} style={{ marginTop: '2rem' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card css={cardStyles}>
-                <CardContent css={cardContentStyles}>
-                  <Typography variant="h5" css={planTitleStyles}>
-                    ABOUT OUR SCHOOL
-                  </Typography>
-                  <Typography variant="body2" css={cardBodyStyles}>
-                    RPS functions under the aegis of D.A.V. College Managing Committee which was enunciated in 1886 by the efforts of venerable RPS schools are run by the Dayanand Anglo Vedic Society on the principles of ‘Dispelling Ignorance and Promoting Knowledge.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </Grid>
-          <Grid item xs={12} md={6} style={{ marginTop: '2rem' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card css={cardStyles}>
-                <CardContent css={cardContentStyles}>
-                  <Typography variant="h5" css={planTitleStyles}>
-                    PRINCIPAL’S MESSAGE
-                  </Typography>
-                  <Typography variant="body2" css={cardBodyStyles}>
-                    "Life always begins with one step outside of our comfort zone." - Shannon L. Alder.
-                    Life is a perennial journey of excellence, infused with learning experiences. Every experience empowers the learner to be even more enriched with confidence. To thrive in the modern world.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </Grid>
-        </Grid>
-        </Slide>
-        <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
-          <Grid item xs={12}>
+        </motion.div>
+
+        <Grid container spacing={2}>
+          {/* Notice Board */}
+          <Grid item xs={12} md={6}>
+            <div>
             <Typography
-            variant="h4"
-            style={{ marginBottom: '2rem', marginTop: '2rem' }}
-            component="h2"
-            className="font-bold text-center mb-4"
-            sx={{
-              fontFamily: "Arial Black",
-              fontSize: "2.5rem",
-              fontWeight: "bold",
-              color: "#000000",
-            }}
-          >
-      Gallery
-          </Typography>
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+  }}
+>
+  Notice Board
+</Typography>
+
+
+              {/* Notice Board Component */}
+              <NoticeBoard />
+              {/* Notice Board Component */}
+            </div>
           </Grid>
-          {galleryImages.map((image, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card css={cardStyles}>
-                  <img src={image.src} alt={image.title} style={{ width: '100%', height: 'auto', borderRadius: '12px 12px 0 0' }} />
-                  <CardContent css={cardContentStyles}>
-                    <Typography variant="body2" css={cardBodyStyles}>
-                      {image.title}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
+
+          {/* Calendar */}
+          <Grid item xs={12} md={6}>
+            <div style={{ marginTop: '2rem' }}>
+            <Typography
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+  }}
+>
+
+                Upcoming Events
+              </Typography>
+              <Container>
+                {/* Calendar Component */}
+                <Calendar />
+              </Container>
+            </div>
+          </Grid>
+
+          <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
+            <Grid item xs={12}>
+            <Typography
+  variant="h4"
+  style={{
+    marginBottom: '2rem',
+    marginTop: '2rem',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
+  }}
+  component="h2"
+  className="font-bold text-center mb-4"
+  sx={{
+    fontFamily: 'Arial Black',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    color: '#000000',
+  }}
+>
+  Scholars
+</Typography>
+
+              <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
+                <FacultyList /> {/* Use FacultyList component */}
+              </Grid>
             </Grid>
-          ))}
+          </Grid>
         </Grid>
       </Container>
     </div>
@@ -271,4 +317,3 @@ const ImageSlider = () => {
 };
 
 export default ImageSlider;
-
