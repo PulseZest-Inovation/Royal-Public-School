@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'tailwindcss/tailwind.css';
-import backgroundImage from '../../Assets/1.jpeg';
+import backgroundImage from '../../Assets/13.jpg';
 
 const Contact = () => {
   const bareillyCoordinates = [28.367, 79.430];

@@ -2,37 +2,16 @@ import { Box, Grid, Paper, Slide, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import React from 'react';
 import One from '../../Assets/12.jpg';
+import Two from '../../Assets/principle.jpg';
 
-// Example images array for the carousel
-const images = [
-  One
-];
 
-export default function Principle() {
+const Principle = () => {
+  const Photo = [{ src: Two }];
+
   return (
     <>
-      {/* Photo at the top of the page covering full width */}
-      <Box sx={{ 
-        position: 'relative', 
-        width: '100%', 
-        height: '250px', // Adjust height as needed
-        overflow: 'hidden', 
-        mb: 6,
-        mt: -5 
-      }}>
-        <img 
-          src={One} 
-          alt="Decorative background of the founder page" // Use a meaningful alt text if the image is not decorative
-          style={{ 
-            position: 'absolute', 
-            top: 0, 
-            left: 0, 
-            width: '100%', 
-            height: '100%', 
-            objectFit: 'cover', // Ensures the image covers the Box area completely
-            objectPosition: 'center', // Centers the image within the Box
-          }} 
-        />
+       <Box sx={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden', mb: 3, mt: -5 }}>
+        <img src={One} alt="Decorative background of the founder page" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
       </Box>
 
       {/* Rest of the content */}
@@ -43,13 +22,13 @@ export default function Principle() {
               <div className="App">
                 <motion.div className="carousel">
                   <motion.div>
-                    {images.map((image, index) => (
+                    {Photo.map((photo, index) => (
                       <motion.div
                         key={index}
                         whileHover={{ scale: 1.2 }}
                         whileTap={{ scale: 2 }}
                       >
-                        <img src={image} alt={`carousel ${index}`} />
+                        <img src={photo.src} alt={`carousel ${index}`} />
                       </motion.div>
                     ))}
                   </motion.div>
@@ -66,24 +45,19 @@ export default function Principle() {
                 component="h3" 
                 sx={{ fontWeight: 'bold' }}
               >
-                Mrs. Indira Lohia
+                Mr. Anand Joshi
               </Typography>
               <hr 
                 className="w-40 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700 line-shifted"
                 style={{ marginLeft: 0, marginRight: 'auto' }}
               />
               <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                President & Director
+              Principle
               </Typography><br/>
               <Typography variant="body1" paragraph>
-                For us, education is an umbrella term which has a wide range of purposeful pursuits and we, at Vidya Mandir, focus on them with great diligence.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                We always wish to groom our students into global citizens and we know that academics solely cannot lead us in the race. The school, therefore, aims at holistic development with a firm belief that every child deserves a vibrant & creative environment to explore his dormant potential.
-              </Typography>
-              <Typography variant="body1">
-                I believe that Vidya Mandir has now become a landmark which delivers world class education embedded with all the facilities that a child needs for his/her grooming.
-              </Typography>
+              Anand Joshi, a revered educator known for his integrity and dedication, leads Royal Public School as its Principal. His emphasis on traditional values and modern pedagogy shapes the school's ethos.
+                            </Typography>
+             
             </Paper>
           </Slide>
         </Grid>
@@ -98,3 +72,4 @@ export default function Principle() {
     </>
   );
 }
+export default Principle;

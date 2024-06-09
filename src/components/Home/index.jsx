@@ -1,21 +1,12 @@
 import { css } from '@emotion/react';
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  Fade,
-  Grid,
-  Slide,
-  Typography,
-  useMediaQuery,
-  useTheme,
+  Box, Button, Card, CardContent, Container, Fade, Grid, Slide, Typography, useMediaQuery, useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Link, useNavigate } from 'react-router-dom';
+import './marqueeComponent.css'; // Import CSS file for styling
 
 // All Features
 import Calendar from '../Features/Calendar/calendar';
@@ -25,9 +16,14 @@ import NoticeBoard from '../Features/NoticeBoard/noticeBoard';
 // All Images
 import One from '../../Assets/1.jpeg';
 import Four from '../../Assets/11.jpeg';
+import Seven from '../../Assets/12.jpeg';
+import Eight from '../../Assets/14.jpeg';
+import Five from '../../Assets/15.jpeg';
+import Nine from '../../Assets/16.jpeg';
 import Two from '../../Assets/2.jpeg';
 import Three from '../../Assets/3.jpeg';
 import Six from '../../Assets/33.jpeg';
+
 
 const ImageSlider = () => {
   const theme = useTheme();
@@ -43,14 +39,13 @@ const ImageSlider = () => {
   ];
 
   const galleryImages = [
-    { src: Four, title: "Gallery Image 1" },
-    { src: Six, title: "Gallery Image 3" },
-    { src: Four, title: "Gallery Image 4" },
-    { src: Six, title: "Gallery Image 5" },
-    { src: Four, title: "Gallery Image 6" },
-    { src: Six, title: "Gallery Image 7" },
+    { src: Eight},
+    { src: Five},
+    { src: Nine},
+    { src: Seven },
+    { src: Four},
+    { src: Six},
   ];
-
   const handleAdmissionButtonClick = () => {
     setShowAdmissionForm(true);
     navigate('/admission');
@@ -117,22 +112,27 @@ const ImageSlider = () => {
     },
   };
 
+
   return (
     <div className="relative w-full h-full overflow-hidden mb-20">
+     <div className="marquee-container">
+      <h1 className="marquee-text">Registration open for classes Nur to V for the session 2024-25</h1>
+    </div>
       <Carousel
         animation="slide"
         navButtonsAlwaysVisible
         navButtonsProps={{
           style: {
-            position:'fixed',
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
             color: 'white',
             borderRadius: 0,
           }
         }}
+        
         // Fix navigation button styles
         navButtonsWrapperProps={{
           style: {
+            position: 'absolute',
             top: 'calc(50% - 20px)', // Center vertically
             height: '40px',
             zIndex: 1,
