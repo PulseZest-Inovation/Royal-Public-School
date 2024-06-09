@@ -124,7 +124,6 @@ const ImageSlider = () => {
         navButtonsAlwaysVisible
         navButtonsProps={{
           style: {
-            position:'fixed',
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
             color: 'white',
             borderRadius: 0,
@@ -133,6 +132,7 @@ const ImageSlider = () => {
         // Fix navigation button styles
         navButtonsWrapperProps={{
           style: {
+            position: 'absolute',
             top: 'calc(50% - 20px)', // Center vertically
             height: '40px',
             zIndex: 1,

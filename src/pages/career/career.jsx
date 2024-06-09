@@ -90,14 +90,14 @@ const Career = () => {
                 className="mb-2"
               />
             </Grid>
-            <Grid item xs={12} sm={6} style={{ marginTop: '16px' }}>
-              <FormControl fullWidth>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth margin="normal">
                 <InputLabel id="demo-simple-select-label">Applied Post</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={selectedClass}
-                  label="Class"
+                  label="Applied Post"
                   onChange={handleChange}
                   required
                 >
