@@ -1,21 +1,11 @@
 import { css } from '@emotion/react';
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  Fade,
-  Grid,
-  Slide,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+  Box,Button,  Card,  CardContent,Container,Fade,Grid,Slide,Typography,useMediaQuery,useTheme,} from '@mui/material';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { Link, useNavigate } from 'react-router-dom';
+import './marqueeComponent.css'; // Import CSS file for styling
 
 // All Features
 import Calendar from '../Features/Calendar/calendar';
@@ -119,6 +109,9 @@ const ImageSlider = () => {
 
   return (
     <div className="relative w-full h-full overflow-hidden mb-20">
+     <div className="marquee-container">
+      <h1 className="marquee-text">Registration are open!</h1>
+    </div>
       <Carousel
         animation="slide"
         navButtonsAlwaysVisible
@@ -129,6 +122,7 @@ const ImageSlider = () => {
             borderRadius: 0,
           }
         }}
+        
         // Fix navigation button styles
         navButtonsWrapperProps={{
           style: {

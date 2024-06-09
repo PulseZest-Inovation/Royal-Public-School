@@ -1,12 +1,14 @@
 import { Box, Button, Grid, MenuItem, Select, TextField, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import React, { useState } from 'react';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import React, { useRef, useState } from 'react';
 import backgroundImage from '../../Assets/1.jpeg';
 
 const Career = () => {
   const [selectedClass, setSelectedClass] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleChange = (event) => {
     setSelectedClass(event.target.value);
@@ -25,6 +27,10 @@ const Career = () => {
     } else {
       console.log('No file selected');
     }
+  };
+
+  const handleFileUploadClick = () => {
+    fileInputRef.current.click();
   };
 
   return (
@@ -108,17 +114,29 @@ const Career = () => {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <label htmlFor="resume" className="block text-sm font-medium text-gray-700 ml-0 mb-2">Upload Resume</label>
-              <div className="mt-1">
-                <input
-                  type="file"
-                  id="resume"
-                  name="resume"
-                  accept=".pdf,.doc,.docx"
-                  onChange={handleFileChange}
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                />
-              </div>
+              <input
+                type="file"
+                id="resume"
+                name="resume"
+                accept=".pdf,.doc,.docx"
+                onChange={handleFileChange}
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleFileUploadClick}
+                startIcon={<AttachFileIcon />}
+                fullWidth
+              >
+                Upload Resume
+              </Button>
+              {selectedFile && (
+                <Typography variant="body2" color="textSecondary" sx={{ marginTop: 2 }}>
+                  Selected file: {selectedFile.name}
+                </Typography>
+              )}
             </Grid>
             <Grid item xs={12}>
               <Button
