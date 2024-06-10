@@ -109,9 +109,11 @@ const ImageSlider = () => {
 
   return (
     <div className="relative w-full h-full overflow-hidden mb-20">
-     <div className="marquee-container">
-      <h1 className="marquee-text">Registration are open!</h1>
-    </div>
+  <div className="marquee-container">
+  <div className="marquee-text left-to-right">Summer Camp :)</div>
+  <div className="marquee-text right-to-left">Admission are open</div>
+</div>
+
    
   <Carousel
     animation="slide"
