@@ -112,53 +112,47 @@ const ImageSlider = () => {
      <div className="marquee-container">
       <h1 className="marquee-text">Registration are open!</h1>
     </div>
-      <Carousel
-        animation="slide"
-        navButtonsAlwaysVisible
-        navButtonsProps={{
-          style: {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            color: 'white',
-            borderRadius: 0,
-          }
-        }}
-        
-        // Fix navigation button styles
-        navButtonsWrapperProps={{
-          style: {
-            position: 'absolute',
-            top: 'calc(50% - 20px)', // Center vertically
-            height: '40px',
-            zIndex: 1,
-          }
-        }}
-        indicatorIconButtonProps={{
-          style: {
-            color: 'rgba(255, 255, 255, 0.5)', // Style for inactive indicators
-          }
-        }}
-        activeIndicatorIconButtonProps={{
-          style: {
-            color: 'white', // Style for active indicator
-          }
-        }}
-        indicatorContainerProps={{
-          style: {
-            marginTop: '10px', // Adjust space between image and indicators
-            textAlign: 'center', // Center indicators
-          }
-        }}
-      >
-        {images.map((image, index) => (
-          <Fade in={true} timeout={500} key={index}>
-            <img
-              src={image.src}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-auto object-cover max-h-[calc(100%-64px)] shadow-md transition-opacity duration-500"
-            />
-          </Fade>
-        ))}
-      </Carousel>
+   
+  <Carousel
+    animation="slide"
+    navButtonsAlwaysVisible
+    navButtonsProps={{
+      style: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        color: 'white',
+        borderRadius: 0,
+      }
+    }}
+    
+    indicatorIconButtonProps={{
+      style: {
+        color: 'rgba(255, 255, 255, 0.5)', // Style for inactive indicators
+      }
+    }}
+    activeIndicatorIconButtonProps={{
+      style: {
+        color: 'white', // Style for active indicator
+      }
+    }}
+    indicatorContainerProps={{
+      style: {
+        marginTop: '10px', // Adjust space between image and indicators
+        textAlign: 'center', // Center indicators
+      }
+    }}
+  >
+    {images.map((image, index) => (
+      <Fade in={true} timeout={500} key={index}>
+        <img
+          src={image.src}
+          alt={`Slide ${index + 1}`}
+          className="w-full h-auto object-cover max-h-[calc(100%-64px)] shadow-md transition-opacity duration-500"
+        />
+      </Fade>
+    ))}
+  </Carousel>
+
+
 
       {/* Admission Button */}
       <Box sx={buttonContainerStyles}>

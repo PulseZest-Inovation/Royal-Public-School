@@ -17,17 +17,15 @@ const Contact = () => {
   };
 
   return (
-    <Box className="relative" sx={{ minHeight: '100vh', overflow: 'hidden' }}>
-      <Box className="absolute inset-0 z-0" sx={{   
-        overflow: 'hidden',
-      }}>
-        <img
-          src={backgroundImage}
-          alt="Background"
-          className="w-full h-full object-cover opacity-100 blur-md"
-          style={{ margin: 0, padding: 0 }}
-        />
-      </Box>
+    <Box className="relative flex justify-center items-center" sx={{ minHeight: '100vh', width: '100vw', overflow: 'hidden', position: 'relative', top: '-6vh', left: 0 }}>
+    <Box className="absolute inset-0 z-0 overflow-hidden" style={{ width: '100%', height: '100%', position: 'fixed' }}>
+      <img
+        src={backgroundImage}
+        alt="Background"
+        className="w-full h-full object-cover opacity-100 blur-md"
+        style={{ margin: 0, padding: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+    </Box>
       <Box className="relative z-10 p-8 max-w-2xl mx-auto" sx={{ paddingTop: 0 }}>
         <Typography
           variant="h4"
