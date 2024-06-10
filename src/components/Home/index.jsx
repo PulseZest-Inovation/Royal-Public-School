@@ -10,7 +10,6 @@ import './marqueeComponent.css'; // Import CSS file for styling
 
 // All Features
 import Calendar from '../Features/Calendar/calendar';
-import FacultyList from '../Features/Faculty/FacultyList';
 import NoticeBoard from '../Features/NoticeBoard/noticeBoard';
 
 // All Images
@@ -114,9 +113,9 @@ const ImageSlider = () => {
 
 
   return (
-    <div className="relative w-full h-full overflow-hidden mb-20">
-     <div className="marquee-container">
-      <h1 className="marquee-text">Registration open for classes Nur to V for the session 2024-25</h1>
+    <div class="relative w-full h-full overflow-hidden mb-20" >
+  <div class="marquee-container">
+    <h1 class="marquee-text">Registration open for classes Nur to V for the session 2024-25</h1>
     </div>
       <Carousel
         animation="slide"
@@ -303,33 +302,6 @@ const ImageSlider = () => {
                 <Calendar />
               </Container>
             </div>
-          </Grid>
-
-          <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
-            <Grid item xs={12}>
-              <Typography
-                variant="h4"
-                style={{
-                  marginBottom: '2rem',
-                  marginTop: '2rem',
-                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' // Add text shadow
-                }}
-                component="h2"
-                className="font-bold text-center mb-4"
-                sx={{
-                  fontFamily: 'Arial Black',
-                  fontSize: '2.5rem',
-                  fontWeight: 'bold',
-                  color: '#000000',
-                }}
-              >
-                Scholars
-              </Typography>
-
-              <Grid container spacing={isSmallScreen ? 2 : 4} style={{ backgroundColor: '#f5f5f5', padding: '2rem', paddingBottom: '4rem', marginTop: '2rem' }}>
-                <FacultyList /> {/* Use FacultyList component */}
-              </Grid>
-            </Grid>
           </Grid>
         </Grid>
       </Container>

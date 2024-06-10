@@ -1,22 +1,27 @@
 .marquee-container {
-    width: 50%;
-    overflow: hidden;
+  width: 100%; /* Use the entire width of the container */
+  overflow: hidden; /* Hide overflow to create a viewport for the scrolling text */
+}
+
+.marquee-text {
+  display: inline-block; /* Ensure the text is treated as a single block */
+  color: black;
+  font-weight: bold; /* Make the text bold */
+  font-size: 30px; /* Set the font size */
+  white-space: nowrap; /* Prevent text from wrapping */
+  animation: marquee 10s linear infinite; /* Apply the sliding animation */
+  margin-top: -10px; /* Adjust margin-top to hide upper blank space */
+}
+
+.marquee-text:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%); /* Start off-screen on the right */
   }
-  
-  .marquee-text {
-    color: black;
-    font-weight: bold; /* Make the text bold */
-    font-size: 24px; /* Set the font size */
-    white-space: nowrap; /* Prevent text from wrapping */
-    animation: marquee 10s linear infinite; /* Apply the sliding animation */
+  100% {
+    transform: translateX(-100%); /* Move off-screen to the left */
   }
-  
-  @keyframes marquee {
-    0% {
-      transform: translateX(100%); /* Start off-screen */
-    }
-    100% {
-      transform: translateX(-100%); /* Slide to the left */
-    }
-  }
-  
+}

@@ -3,7 +3,7 @@ import { Box, Button, Grid, MenuItem, Select, TextField, Typography } from '@mui
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import React, { useRef, useState } from 'react';
-import backgroundImage from '../../Assets/13.jpg';
+import backgroundImage from '../../Assets/1.jpeg';
 
 const Career = () => {
   const [selectedClass, setSelectedClass] = useState('');
@@ -34,15 +34,15 @@ const Career = () => {
   };
 
   return (
-    <Box className="relative flex justify-center items-center" sx={{ minHeight: '100vh', overflow: 'hidden' }}>
-      <Box className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          src={backgroundImage}
-          alt="Background"
-          className="w-full h-full object-cover opacity-100 blur-md"
-          style={{ margin: 0, padding: 0 }}
-        />
-      </Box>
+    <Box className="relative flex justify-center items-center" sx={{ minHeight: '100vh', width: '100vw', overflow: 'hidden', position: 'relative', top: '-6vh', left: 0 }}>
+    <Box className="absolute inset-0 z-0 overflow-hidden" style={{ width: '100%', height: '100%', position: 'fixed' }}>
+      <img
+        src={backgroundImage}
+        alt="Background"
+        className="w-full h-full object-cover opacity-100 blur-md"
+        style={{ margin: 0, padding: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+    </Box>
       <Box className="relative z-10 p-8 max-w-2xl mx-auto" sx={{ paddingTop: 0 }}>
         <Typography
           variant="h4"
@@ -58,7 +58,8 @@ const Career = () => {
         >
           Job Application Form
         </Typography><br/>
-        <form className="space-y-6 bg-white p-6 rounded-lg shadow-md" onSubmit={handleSubmit}>
+        <form className="bg-white p-6 rounded-lg shadow-md" onSubmit={handleSubmit}>
+
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField

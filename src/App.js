@@ -2,6 +2,8 @@ import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import NonAcademic from "./pages/Achievement//non";
+import Academic from "./pages/Achievement/academic";
 import AdmissionPage from "./pages/AdmissionForm/admission";
 import Home from './pages/Home';
 import Founder from "./pages/Profile/founder";
@@ -12,6 +14,7 @@ import VicePresident from "./pages/Profile/viceprinciple";
 import AboutUs from './pages/aboutUs/aboutUs';
 import Career from './pages/career/career';
 import Contact from './pages/contact/contact';
+
 
 
 const App = () => {
@@ -26,6 +29,9 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/career" element={<Career />} />
             <Route path="/admission" element={<AdmissionPage />} />
+            <Route path="/academic" element={<Academic />} />
+            <Route path="/non-academic" element={<NonAcademic />} />
+
 
             <Route path="/vice-president" element={<VicePrinciple />} />
             <Route path="/founder" element={<Founder />} />

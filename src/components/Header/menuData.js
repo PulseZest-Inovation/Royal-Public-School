@@ -11,7 +11,6 @@ const menuData = [
 
     ],
   },
-  { title: 'Beyond Curriculum', path: '/beyond-curriculum' },
   { title: 'Achievements',
   submenu: [
     { title: 'Academic', path: '/academic' },
